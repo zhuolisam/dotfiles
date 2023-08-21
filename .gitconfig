@@ -3,3 +3,5 @@
 	email = zhuolisam0627@gmail.com
 [core]
 	editor = nano
+[credential]
+	helper = osxkeychain
