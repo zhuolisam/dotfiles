@@ -1,7 +1,7 @@
-export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -67,10 +67,8 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-
 # enable completion system
 autoload compinit
-
 # initialize all completions on #fpath but ignore (-i) all insecure files and directories
 compinit -i
 
@@ -81,10 +79,9 @@ compinit -i
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
 	zsh-completions
-	zsh-autosuggestions
-	zsh-syntax-highlighting
+        zsh-autosuggestions
+        zsh-syntax-highlighting
 )
-
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,8 +111,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#use nvm
-source /opt/homebrew/opt/nvm/nvm.sh
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/sli/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# use nvm, use second one if you're on intel chip
+# source /opt/homebrew/opt/nvm/nvm.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && \. "/usr/local/opt/nvm/etc/bash_completion"
 
 # use starship theme (needs to be at the end)
 eval "$(starship init zsh)"
