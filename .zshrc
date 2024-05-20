@@ -52,10 +52,10 @@ export HOMEBREW_NO_INSTALL_FROM_API=1
 
 ## Load Python
 # All these are to setup pyenv, can be found in github.com/pyenv/pyenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
 # This to activate pyenv-virtualenv
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
@@ -70,11 +70,24 @@ alias gb='git branch | cat'
 alias ll='ls -la'
 
 # Load GO
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH
-export PATH=$PATH:$GOROOT/bin
+export GOPATH="$HOME/go"
+export GOROOT="/usr/local/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 # use starship theme (needs to be at the end)
 eval "$(starship init zsh)"
+
+# Load godot
+alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+# For Poetry
+#export PATH="/Users/zhuoli/.local/bin:$PATH"
+
+# Created by `pipx` on 2024-05-09 13:50:36
+export PATH="$PATH:/Users/zhuoli/.local/bin"
